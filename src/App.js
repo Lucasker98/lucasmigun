@@ -86,24 +86,6 @@ const Nav = styled.nav`
   }
 `;
 
-const Main = styled.main`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`;
-
-const Section = styled.section`
-  width: 48%;
-  margin-bottom: 40px;
-  padding: 20px;
-  background-color: #f4f4f4;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-  @media (max-width: 767px) {
-    width: 100%;
-  }
-`;
 
 const Footer = styled.footer`
   text-align: center;
