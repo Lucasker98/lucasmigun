@@ -10,7 +10,6 @@ import banner4 from './banner4.jpg';
 import banner5 from './banner5.jpg';
 import banner6 from './banner6.jpg';
 
-// Styled Components
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
@@ -31,32 +30,38 @@ const Header = styled.header`
 
   @media (max-width: 767px) {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 `;
 
 const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  margin-right: 2px;
+  justify-content: center;
 
   @media (max-width: 767px) {
     margin-bottom: 20px;
-    justify-content: center; // Centers the logo on mobile
   }
 `;
 
 const Logo = styled.div`
   font-size: 40px;
   font-weight: bold;
-  padding: 100;
   margin-right: 20px;
+
+  @media (max-width: 767px) {
+    font-size: 24px;
+    margin-right: 10px;
+  }
 `;
 
 const LogoImage = styled.img`
   max-height: 100px;
-  margin-right: 200px;
+  margin-right: 10px;
+
+  @media (max-width: 767px) {
+    max-height: 60px;
+  }
 `;
 
 const Nav = styled.nav`
@@ -68,6 +73,7 @@ const Nav = styled.nav`
 
     @media (max-width: 767px) {
       flex-direction: column;
+      align-items: center;
     }
   }
 
@@ -102,8 +108,14 @@ const Footer = styled.footer`
 `;
 
 const PageContent = styled.div`
+  text-align: center;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
   h2 {
-    text-align: center;
+    margin-bottom: 20px;
   }
 `;
 
@@ -113,14 +125,18 @@ const TestimonialCard = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin-bottom: 20px;
+
+  @media (max-width: 767px) {
+    padding: 15px;
+  }
 `;
 
 const PublicationBanners = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   margin-bottom: 40px;
-  padding-bottom: 5px;
 `;
 
 const BannerCard = styled.div`
@@ -128,12 +144,23 @@ const BannerCard = styled.div`
   height: 250px;
   margin: 10px;
   overflow: hidden;
+
+  @media (max-width: 767px) {
+    width: 80%;
+    height: auto;
+    margin: 10px 0;
+  }
 `;
 
 const BannerImage = styled.img`
   width: 75%;
   height: 90%;
   object-fit: cover;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const NavigationButton = styled.button`
@@ -147,6 +174,39 @@ const NavigationButton = styled.button`
 
   &:hover {
     color: #666;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 18px;
+  }
+`;
+
+const AboutContent = styled.div`
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+
+  ul {
+    text-align: right;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: 10px;
   }
 `;
 
@@ -213,14 +273,28 @@ const HomePage = () => {
 const AboutPage = () => (
   <PageContent>
     <h2>אודות</h2>
-    <p>
-      לוקס-יעוץ ומיגון, עוסק במתן יעוץ מקצועי בנושא המיגון בפיקוד העורף והג''א.
-    </p>
-    <p>
-      לוקס קרסברג, הנדסאי בניין אשר שירת בפיקוד העורף והג''א במשך שלוש שנים, בהן
-      היה אחראי על טופס 4 במחוז דרום ולאחר מכן התמנה לרשות מוסמכת מטעם הג''א
-      במערך הרגולציה הארצי בלוד.
-    </p>
+    <AboutContent>
+      <h2>לוקס יעוץ ומיגון - המומחה שלכם לתכנון מיגון מושלם</h2>
+      <p>
+        לוקס קרסברג, הנדסאי בניין מוסמך ובעל ניסיון רב, שימש כאחראי על טופס 4 במחוז הדרום ולאחר מכן התמנה לרשות מוסמכת מפיקוד העורף במערך הרגולציה הארצי בלוד. בשלוש שנות שירותו בפיקוד העורף, צבר לוקס ידע וניסיון ייחודיים בתחום המיגון.
+      </p>
+      <p>
+        כיום, לוקס-יעוץ ומיגון מספקים ייעוץ מקצועי לאדריכלים, מהנדסים, מנהלי פרויקטים ולקוחות פרטיים בכל הקשור למיגון מבנים ודרישות פיקוד העורף. השירותים כוללים:
+      </p>
+      <ul>
+        <li>ייעוץ אדריכלי וקונסטרוקטיבי לשילוב אופטימלי של מרחבים מוגנים</li>
+        <li>ייעוץ ראשוני בשלבי התכנון והסקיצות</li>
+        <li>סיוע בהגשת בקשות לפטורים ממיגון</li>
+        <li>בדיקת מרחבים מוגנים לקראת טופס 4 ואישורי אכלוס</li>
+        <li>ליווי התהליך מול פיקוד העורף מהשלבים המוקדמים ועד לקבלת היתר בנייה</li>
+      </ul>
+      <p>
+        תהליכי הרישוי והתכנון הופכים מורכבים יותר מיום ליום, עם דרישות משתנות של הרשויות השונות. מאחר שהמרחב המוגן הוא חלק מרכזי מכל מבנה, שילובו המושלם דורש תכנון קפדני וגמיש המלווה את שינויי הפרויקט.
+      </p>
+      <p>
+        בלוקס יעוץ ומיגון אנו מספקים שירות מקצועי, זמין ואמין להטמעת מרחבים מוגנים בפרויקטים, תוך עמידה בדרישות ובתקנות העדכניות וזאת במטרה להבטיח תכנון יעיל, לחסוך בעלויות ולאפשר גמישות למתכננים.
+      </p>
+    </AboutContent>
   </PageContent>
 );
 
