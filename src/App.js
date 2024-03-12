@@ -213,7 +213,7 @@ const AboutContent = styled.div`
 const HomePage = () => {
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
 
-  const banners = [banner1, banner2, banner3, banner4, banner5, banner6];
+  const banners = [banner1, banner4, banner6, banner2, banner5, banner3];
 
   const handlePrevBanner = () => {
     setCurrentBannerIndex((prevIndex) =>
