@@ -1,7 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
-import LOG from './LOG.png';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import LOG from "./LOG.png";
+import { Helmet } from "react-helmet";
+import banner1 from './banner1.jpg';
+import banner2 from './banner2.jpg';
+import banner3 from './banner3.jpg';
+import banner4 from './banner4.jpg';
+import banner5 from './banner5.jpg';
+import banner6 from './banner6.jpg';
 
 // Styled Components
 const Container = styled.div`
@@ -108,31 +115,112 @@ const TestimonialCard = styled.div`
   margin-bottom: 20px;
 `;
 
-const HomePage = () => (
-  <PageContent>
-    <h1>לוקס יעוץ ומיגון</h1>
-    <p>מתן ייעוץ לתוכניות עד לקבלת אישור פיקוד העורף.</p>
-    <h2>המלצות</h2>
-    <TestimonialCard>
-      <p>"שירות מצוין ומקצועי ביותר! לוקס עזר לנו לקבל את כל האישורים הדרושים בצורה יעילה ומהירה."</p>
-      <p>- דוד לוי, מנהל פרויקט</p>
-    </TestimonialCard>
-    <TestimonialCard>
-      <p>"הייעוץ של לוקס היה מדויק ומקיף. הוא הבין את הצרכים שלנו והציע פתרונות מעולים."</p>
-      <p>- רחל כהן, אדריכלית</p>
-    </TestimonialCard>
-    <TestimonialCard>
-      <p>"אני ממליץ בחום על שירותיו של לוקס. הוא מומחה בתחום והתנהל בצורה מקצועית ואדיבה."</p>
-      <p>- יוסי שמעון, לקוח פרטי</p>
-    </TestimonialCard>
-  </PageContent>
-);
+const PublicationBanners = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 5px;
+`;
+
+const BannerCard = styled.div`
+  width: 300px;
+  height: 250px;
+  margin: 10px;
+  overflow: hidden;
+`;
+
+const BannerImage = styled.img`
+  width: 75%;
+  height: 90%;
+  object-fit: cover;
+`;
+
+const NavigationButton = styled.button`
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #666;
+  }
+`;
+
+const HomePage = () => {
+  const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
+
+  const banners = [banner1, banner2, banner3, banner4, banner5, banner6];
+
+  const handlePrevBanner = () => {
+    setCurrentBannerIndex((prevIndex) =>
+      prevIndex === 0 ? banners.length - 3 : prevIndex - 1
+    );
+  };
+
+  const handleNextBanner = () => {
+    setCurrentBannerIndex((prevIndex) =>
+      prevIndex === banners.length - 3 ? 0 : prevIndex + 1
+    );
+  };
+
+  const currentBanners = banners.slice(currentBannerIndex, currentBannerIndex + 3);
+
+  return (
+    <PageContent>
+      <h1>לוקס קרסברג</h1>
+      <p>יועץ מיגון יוצא פיקוד העורף</p>
+
+      <h2>המלצות</h2>
+      <TestimonialCard>
+        <p>
+          "שירות מצוין ומקצועי ביותר! לוקס עזר לנו לקבל את כל האישורים הדרושים
+          בצורה יעילה ומהירה."
+        </p>
+        <p>- דוד לוי, מנהל פרויקט</p>
+      </TestimonialCard>
+      <TestimonialCard>
+        <p>
+          "הייעוץ של לוקס היה מדויק ומקיף. הוא הבין את הצרכים שלנו והציע פתרונות
+          מעולים."
+        </p>
+        <p>- רחל כהן, אדריכלית</p>
+      </TestimonialCard>
+      <TestimonialCard>
+        <p>
+          "אני ממליץ בחום על שירותיו של לוקס. הוא מומחה בתחום והתנהל בצורה מקצועית
+          ואדיבה."
+        </p>
+        <p>- יוסי שמעון, לקוח פרטי</p>
+      </TestimonialCard>
+      <h2>פרסומים</h2>
+      <PublicationBanners>
+        <NavigationButton onClick={handlePrevBanner}>&#8249;</NavigationButton>
+        {currentBanners.map((banner, index) => (
+          <BannerCard key={index}>
+            <BannerImage src={banner} alt={`Banner ${currentBannerIndex + index + 1}`} />
+          </BannerCard>
+        ))}
+        <NavigationButton onClick={handleNextBanner}>&#8250;</NavigationButton>
+      </PublicationBanners>
+    </PageContent>
+  );
+};
 
 const AboutPage = () => (
   <PageContent>
     <h2>אודות</h2>
-    <p>לוקס-יעוץ ומיגון, עוסק במתן יעוץ מקצועי בנושא המיגון בפיקוד העורף והג''א.</p>
-    <p>לוקס קרסברג, הנדסאי בניין אשר שירת בפיקוד העורף והג''א במשך שלוש שנים, בהן היה אחראי על טופס 4 במחוז דרום ולאחר מכן התמנה לרשות מוסמכת מטעם הג''א במערך הרגולציה הארצי בלוד.</p>
+    <p>
+      לוקס-יעוץ ומיגון, עוסק במתן יעוץ מקצועי בנושא המיגון בפיקוד העורף והג''א.
+    </p>
+    <p>
+      לוקס קרסברג, הנדסאי בניין אשר שירת בפיקוד העורף והג''א במשך שלוש שנים, בהן
+      היה אחראי על טופס 4 במחוז דרום ולאחר מכן התמנה לרשות מוסמכת מטעם הג''א
+      במערך הרגולציה הארצי בלוד.
+    </p>
   </PageContent>
 );
 
@@ -161,6 +249,16 @@ const ContactPage = () => (
 function App() {
   return (
     <Router>
+      <div>
+        <Helmet>
+          <title>לוקס יעוץ ומיגון</title>
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+          />
+        </Helmet>
+      </div>
       <Container>
         <Header>
           <LogoWrapper>
