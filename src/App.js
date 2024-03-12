@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
-import LOG1 from './LOG1.png';
+import LOG from './LOG.png';
 
 // Styled Components
 const Container = styled.div`
@@ -48,8 +48,8 @@ const Logo = styled.div`
 `;
 
 const LogoImage = styled.img`
-  max-height: 180px;
-  margin-right: 100px;
+  max-height: 100px;
+  margin-right: 200px;
 `;
 
 const Nav = styled.nav`
@@ -86,7 +86,6 @@ const Nav = styled.nav`
   }
 `;
 
-
 const Footer = styled.footer`
   text-align: center;
   margin-top: 40px;
@@ -112,7 +111,7 @@ const TestimonialCard = styled.div`
 const HomePage = () => (
   <PageContent>
     <h1>לוקס יעוץ ומיגון</h1>
-    <p>מ ייעוץ לתוכניות עד לקבלת אישור פיקוד העורף.</p>
+    <p>מתן ייעוץ לתוכניות עד לקבלת אישור פיקוד העורף.</p>
     <h2>המלצות</h2>
     <TestimonialCard>
       <p>"שירות מצוין ומקצועי ביותר! לוקס עזר לנו לקבל את כל האישורים הדרושים בצורה יעילה ומהירה."</p>
@@ -166,7 +165,7 @@ function App() {
         <Header>
           <LogoWrapper>
             <Logo>לוקס יעוץ ומיגון</Logo>
-            <LogoImage src={LOG1} alt="Logo" />
+            <LogoImage src={LOG} alt="Logo" />
           </LogoWrapper>
           <Nav>
             <ul>
